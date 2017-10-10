@@ -57,7 +57,7 @@ def train():
 
 
     def dis_entropy(y_true, y_pred):
-        return -K.log(K.abs((y_pred - y_true)))
+        return -K.log(K.abs((y_pred - y_true)) + 1e-7) 
 
     # Create optimizers
     opt_gan = Adam(lr=1E-3)
