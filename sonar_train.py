@@ -50,7 +50,7 @@ def train():
 
     data_ind = np.random.permutation(400)
     # data_ind = np.arange(400)
-    train_img, train_slabel, test_clabel = load_dataset2(data_range = data_ind[0:350])
+    train_img, train_slabel, train_clabel = load_dataset2(data_range = data_ind[0:350])
     # train_img, train_slabel, train_clabel = load_dataset2(data_range = data_ind[0:10])
     test_img, test_slabel, test_clabel = load_dataset2(data_range = data_ind[350:])
     # test_img, test_slabel, test_clabel = load_dataset2(data_range = data_ind[10:20])
@@ -63,7 +63,7 @@ def train():
     # Create optimizers
     opt_gan = Adam(lr=1E-3)
     # opt_discriminator = SGD(lr=1E-3, momentum=0.9, nesterov=True)
-    opt_discriminator = Adam(lr=1E-3)
+    opt_discriminator = Adam(lr=1E-5)
     opt_generator = Adam(lr=1E-3)
 
     gan_loss = ['mae', dis_entropy]

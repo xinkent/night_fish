@@ -38,7 +38,7 @@ def discriminator():
     x = CBR(64,(128,64,32))(x)
     x = CBR(128,(64,32,64))(x)
     x = CBR(256,(32,16,128))(x)
-    x = CBR(512,(16,32,256))(x)
+    x = CBR(512,(16,8,256))(x)
     x = Conv2D(filters=1,kernel_size=3,strides=1,padding='same')(x)
     x = Activation('sigmoid')(x)
     output = Lambda(lambda x: K.mean(x, axis=[1,2]),output_shape=(1,))(x)
