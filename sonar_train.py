@@ -50,10 +50,10 @@ def train():
 
     data_ind = np.random.permutation(400)
     # data_ind = np.arange(400)
-    # train_img, train_slabel, test_clabel = load_dataset2(data_range = data_ind[0:350])
-    train_img, train_slabel, train_clabel = load_dataset2(data_range = data_ind[0:10])
-    # test_img, test_slabel, test_clabel = load_dataset2(data_range = data_ind[350:])
-    test_img, test_slabel, test_clabel = load_dataset2(data_range = data_ind[10:20])
+    train_img, train_slabel, test_clabel = load_dataset2(data_range = data_ind[0:350])
+    # train_img, train_slabel, train_clabel = load_dataset2(data_range = data_ind[0:10])
+    test_img, test_slabel, test_clabel = load_dataset2(data_range = data_ind[350:])
+    # test_img, test_slabel, test_clabel = load_dataset2(data_range = data_ind[10:20])
 
 
 
