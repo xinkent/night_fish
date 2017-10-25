@@ -81,18 +81,18 @@ def generator():
     x = Reshape((2,1,1024))(x)
 
     # decoder
-    x = CBR(512,(4,2,1024),sample='up',activation='relu',dropout=True)(x)
-    x = CBR(256,(8,16,512),sample='up',activation='relu',dropout=True)(x)
-    x = CBR(128,(16,32,256),sample='up',activation='relu',dropout=True)(x)
-    x = CBR(64,(32,64,128),sample='up',activation='relu',dropout=False)(x)
-    x = CBR(32,(64,128,64),sample='up',activation='relu',dropout=False)(x)
-    x = CBR(16,(128,256,32),sample='up',activation='relu',dropout=False)(x)
-    x = CBR(8,(256,512,16),sample='up',activation='relu',dropout=False)(x)
+    x = CBR(512,(2,1,1024),sample='up',activation='relu',dropout=True)(x)
+    x = CBR(512,(4,2,512),sample='up',activation='relu',dropout=True)(x)
+    x = CBR(256,(8,4,512),sample='up',activation='relu',dropout=True)(x)
+    x = CBR(128,(16,8,256),sample='up',activation='relu',dropout=False)(x)
+    x = CBR(64,(32,16,128),sample='up',activation='relu',dropout=False)(x)
+    x = CBR(32,(64,32,64),sample='up',activation='relu',dropout=False)(x)
+    x = CBR(16,(128,64,32),sample='up',activation='relu',dropout=False)(x)
+    x = CBR(8,(128,64,16),sample='up',activation='relu',dropout=False)(x)
     output = Conv2D(filters=3, kernel_size=(3,3),strides=1,padding="same")(x)
 
-    encoder = Model(inputs=input1, outputs=output)
-    GAN = Model(inputs=[input1,input2], outputs=output)
-    return(GAN)
+    model = Model(inputs=[input1,input2], outputs=output)
+    return(model)
 
 
 def GAN(generator, discriminator):
