@@ -162,6 +162,10 @@ def train():
             image = image*128.0+128.0
             Image.fromarray(image.astype(np.uint8)).save(resultDir + "/vgenerated_" + str(epoch)+"epoch.png")
 
+            image = combine_images(img_batch)
+            image = image*128.0+128.0
+            Image.fromarray(image.astype(np.uint8)).save(resultDir + "/vgt_" + str(epoch)+"epoch.png")
+            
             gan.save_weights(modelDir + 'gan_weights' + "_lambda" + str(lmd) + "_epoch"+ str(epoch) + '.h5')
 
         o.close()
