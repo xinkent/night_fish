@@ -92,7 +92,7 @@ def generator():
 
     encoder = Model(inputs=input1, outputs=output)
     GAN = Model(inputs=[input1,input2], outputs=output)
-    return(model)
+    return(GAN)
 
 
 def GAN(generator, discriminator):
