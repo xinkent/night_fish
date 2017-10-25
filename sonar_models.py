@@ -91,8 +91,8 @@ def generator():
     output = Conv2D(filters=3, kernel_size=(3,3),strides=1,padding="same")(x)
 
     encoder = Model(inputs=input1, outputs=output)
-    GAN = Model(inputs=[input1,input2], outputs=output)
-    return(GAN)
+    generator = Model(inputs=[input1,input2], outputs=output)
+    return(generator)
 
 
 def GAN(generator, discriminator):
