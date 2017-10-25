@@ -12,7 +12,7 @@ import os
 import tensorflow as tf
 import argparse
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "2,3"
+os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
 sess = tf.Session(config = config)
@@ -121,7 +121,7 @@ def train():
         for index in range(int(test_n/batch_size)):
             img_batch = test_img[test_ind[(index*batch_size) : ((index+1)*batch_size)],:,:,:]
             slabel_batch =test_slabel[test_ind[(index*batch_size) : ((index+1)*batch_size)],:,:,:]
-            clabel_batch =test_clabel[ind[(index*batch_size) : ((index+1)*batch_size)],:,:,:]
+            clabel_batch =test_clabel[test_ind[(index*batch_size) : ((index+1)*batch_size)],:,:,:]
             generated_img = gen.predict([slabel_batch,clabel_batch])
 
             y_real = np.array([1] * batch_size)
