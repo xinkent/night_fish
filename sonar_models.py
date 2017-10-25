@@ -30,12 +30,12 @@ def CBR(ch,shape,bn=True,sample='down',activation=LeakyReLU, dropout=False):
 
 
 
-def discriminator(encoder):
+def discriminator():
     h = 512
     w = 256
     img = Input(shape=(h,w,3))
-    x = CBR(32,(512,256,3),bn=False)(img)
-    x = CBR(32,(256,128,3))
+    x = CBR(16,(512,256,3),bn=False)(img)
+    x = CBR(32,(256,128,16))(x)
     x = CBR(64,(128,64,32))(x)
     x = CBR(128,(64,32,64))(x)
     x = CBR(256,(32,16,128))(x)
