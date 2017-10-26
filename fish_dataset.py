@@ -31,7 +31,7 @@ def load_dataset(dataDir='./dataset/train_data/', data_range=range(0,300)):
         print("load dataset done")
         return np.array(imgDataset),np.array(labelDataset)
 
-def load_dataset2(dataDir='./dataset/train_data/', data_range=range(0,300)):
+def load_dataset2(dataDir='./dataset/train_data/', data_range=range(0,300),skip=True):
         print("load dataset start")
         print("     from: %s"%dataDir)
         imgDataset = []
@@ -41,7 +41,11 @@ def load_dataset2(dataDir='./dataset/train_data/', data_range=range(0,300)):
         imgStart = 1515
         slabelStart = 1
         clabelStart = 12313
+        
         for i in data_range:
+            if skip:
+                if i%3 != 0:
+                    continue
             imgNum = imgStart + int(i*(29/10))
             slabelNum = slabelStart + i
             clabelNum = clabelStart + int(i*(29/10))
