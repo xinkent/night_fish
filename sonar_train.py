@@ -48,7 +48,7 @@ def train():
     o.write("epoch,dis_loss,gan_mae,gan_entropy,test_dis_loss,validation_mae,validation_entropy" + "\n")
     o.close()
 
-    n = 400
+    n = 1145
     # data_ind = np.random.permutation(n)
     data_ind = np.arange(n)
     train_img, train_slabel, train_clabel = load_dataset2(data_range = data_ind[:int(n*0.7)])
