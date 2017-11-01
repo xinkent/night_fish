@@ -126,12 +126,12 @@ def train():
 
             y_real = np.array([1] * batch_size)
             y_fake = np.array([0] * batch_size)
-            d_real_loss = np.array(dis.train_on_batch(img_batch,y_real))
-            d_fake_loss =np.array(dis.train_on_batch(generated_img,y_fake))
+            d_real_loss = np.array(dis.test_on_batch(img_batch,y_real))
+            d_fake_loss =np.array(dis.test_on_batch(generated_img,y_fake))
             d_loss = d_real_loss + d_fake_loss
             test_dis_loss_list.append(d_loss)
             gan_y = np.array([1] * batch_size)
-            g_loss = np.array(gan.train_on_batch([slabel_batch,clabel_batch], [img_batch, gan_y]))
+            g_loss = np.array(gan.test_on_batch([slabel_batch,clabel_batch], [img_batch, gan_y]))
             test_gan_loss_list.append(g_loss)
         test_dis_loss = np.mean(np.array(test_dis_loss_list))
         test_gan_loss = np.mean(np.array(test_gan_loss_list), axis=0)
