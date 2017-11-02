@@ -35,10 +35,10 @@ def discriminator():
     w = 256
     img = Input(shape=(h,w,3))
     x = CBR(32,(512,256,3),bn=False)(img)
-    x = CBR(64,(256,128,16))(x)
-    x = CBR(128,(128,64,32))(x)
-    x = CBR(256,(64,32,64))(x)
-    x = CBR(512,(32,16,128))(x)
+    x = CBR(64,(256,128,32))(x)
+    x = CBR(128,(128,64,64))(x)
+    x = CBR(256,(64,32,128))(x)
+    x = CBR(512,(32,16,256))(x)
 
     x = Conv2D(filters=1,kernel_size=3,strides=1,padding='same')(x)
     x = Activation('sigmoid')(x)
